@@ -1,0 +1,69 @@
+<div class="container-fluid">
+
+
+    <form class="formCandidate">
+        <div class="form-group">
+            <input type="text" name="name" [(ngModel)]="jobCandidate.name" class="form-control" id="inputCandidateName"
+                placeholder="Enter candidate full name" />
+
+            <input type="email" name="email" [(ngModel)]="jobCandidate.email" class="form-control"
+                id="inputCandidateEmail" placeholder="Enter candidate email" />
+
+            <input type="text" name="telephoneNumber" [(ngModel)]="jobCandidate.telephoneNumber" class="form-control"
+                id="inputCandidateNumber" placeholder="Enter candidate telephone number" />
+
+            <input type="date" name="dateOfBirth" [(ngModel)]="jobCandidate.dateOfBirth" class="form-control"
+                id="inputCandidateDateOfBirth" placeholder="Enter candidate date of birth" />
+
+            <div class="form-group">
+                <label for="exampleFormControlSelect2">Choose candidate skills</label>
+                <select multiple class="form-control" name="selectSkill" id="exampleFormControlSelect2"
+                    [(ngModel)]="selectedSkills">
+                    <option *ngFor="let skill of skills" value={{skill.id}}>{{skill.name}}</option>
+                </select>
+            </div>
+        </div>
+        <button type="submit" (click)="addCandidate()" class="buttonNewCandidate btn btn-dark btn-outline-dark">Add new
+            candidate</button>
+    </form>
+
+    <table class="table table-striped table-dark">
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+                Name
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                Telephone number
+            </th>
+            <th>
+                Date of birth
+            </th>
+            <th>
+                Skills
+            </th>
+            <th colspan="2">
+                Actions
+            </th>
+        </tr>
+        <tr *ngFor="let candidate of jobCandidates">
+            <td>{{candidate.id}}</td>
+            <td>{{candidate.name}}</td>
+            <td>{{candidate.email}}</td>
+            <td>{{candidate.telephoneNumber}}</td>
+            <td>{{candidate.dateOfBirth}}</td>
+            <td><a href="#">view</a></td>
+            <td><button (click)="getCandidateById(candidate.id)" class="btn btn-outline-warning btn-sm">update</button>
+            </td>
+            <td><button (click)="deleteCandidate(candidate.id)" class="btn btn-outline-danger btn-sm">delete</button>
+            </td>
+        </tr>
+
+    </table>
+
+</div>

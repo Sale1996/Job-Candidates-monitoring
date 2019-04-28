@@ -1,0 +1,33 @@
+<div class="container-fluid">
+
+
+    <form class="formSkill">
+        <div class="form-group">
+            <input type="text" [(ngModel)]="skill.name" name="name" class="form-control" id="inputSkillName"
+                placeholder="Enter skill name">
+        </div>
+        <button type="submit" (click)="addSkill()" class=" btn btn-dark btn-outline-dark">Add skill</button>
+    </form>
+
+    <table class="table table-striped table-dark">
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+                Name
+            </th>
+            <th colspan="2">
+                Actions
+            </th>
+        </tr>
+        <tr *ngFor="let skill of skills">
+            <td>{{skill.id}}</td>
+            <td>{{skill.name}}</td>
+            <td><button (click)="getSkillById(skill.id)" class="btn btn-outline-warning btn-sm">update</button></td>
+            <td><button (click)="deleteSkill(skill.id)" class="btn btn-outline-danger btn-sm">delete</button></td>
+        </tr>
+
+    </table>
+
+</div>

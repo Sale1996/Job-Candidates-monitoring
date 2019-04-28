@@ -1,0 +1,19 @@
+.buttonNewSkill{
+    margin: 15px;
+    margin-left: 0px;
+}
+
+.formSkill{
+    margin: 15px;
+    margin-left: 0px;
+    margin-right: 60%;
+   
+
+}
+
+input, textarea{
+    background-color: #343A40;
+    border-color: rgb(148, 93, 53);
+    border-inline-start-color: rgb(148, 93, 53);
+}
+

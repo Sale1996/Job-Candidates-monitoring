@@ -1,0 +1,22 @@
+.buttonNewCandidate{
+    margin: 15px;
+    margin-left: 0px;
+}
+
+
+.formCandidate{
+    margin: 15px;
+    margin-left: 0px;
+    margin-right: 60%;
+   
+
+}
+
+input, textarea , select, option{
+    background-color: #343A40;
+    border-color: rgb(148, 93, 53);
+    color: azure;
+    border-inline-start-color: rgb(148, 93, 53);
+    margin : 10px;
+    margin-left: 0px;
+}
