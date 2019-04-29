@@ -3,6 +3,7 @@ import { IJobCandidateDTO } from '../../models/jobCandidateDTO.model';
 import { JobCandidateService } from '../../servisi/jobCandidate.service';
 import { SkillService } from 'src/app/servisi/skill.service';
 import { ISkillDTO } from 'src/app/models/skillDTO.model';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
     selector: 'list-of-candidates-component',
@@ -20,9 +21,16 @@ export class ListOfCandidatesComponent implements OnInit {
     selectedSkills = [];
     candidateName: string = '';
     skillsForSearching = [];
+    closeResult: string;
+    selectedCandidate: IJobCandidateDTO;
+    newCandidateSkill = {};
 
 
-    constructor(private candidateService: JobCandidateService, private skillService: SkillService) { }
+    constructor(
+        private candidateService: JobCandidateService,
+        private skillService: SkillService,
+        private modalService: NgbModal
+    ) { }
 
     ngOnInit() {
         this.getCandidates();
@@ -116,6 +124,43 @@ export class ListOfCandidatesComponent implements OnInit {
             console.log(error); this.jobCandidates = [];
         });
 
+    }
+
+    addCandidateSkill(candidateId, skillId) {
+
+        this.candidateService.candidateAddSkill(candidateId, skillId).subscribe((data) => {
+            this.getCandidates();
+            var selectedSkill = this.skills.find(item => item.id == skillId);
+            this.selectedCandidate.skills = this.selectedCandidate.skills.concat(selectedSkill);
+
+        })
+    }
+
+    removeCandidateSkill(candidateId, skillId) {
+
+        this.candidateService.candidateRemoveSkill(candidateId, skillId).subscribe((data) => {
+            this.getCandidates();
+            this.selectedCandidate.skills = this.selectedCandidate.skills.filter(item => item.id !== skillId);
+        })
+    }
+
+    open(content, candidate: IJobCandidateDTO) {
+        this.selectedCandidate = candidate;
+        this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
+            this.closeResult = `Closed with: ${result}`;
+        }, (reason) => {
+            this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+        });
+    }
+
+    private getDismissReason(reason: any): string {
+        if (reason === ModalDismissReasons.ESC) {
+            return 'by pressing ESC';
+        } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+            return 'by clicking on a backdrop';
+        } else {
+            return `with: ${reason}`;
+        }
     }
 
 

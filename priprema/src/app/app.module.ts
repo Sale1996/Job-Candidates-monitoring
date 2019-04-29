@@ -14,6 +14,8 @@ import { ListOfSkillsComponent } from './section/list_of_skills/list_of_skills.c
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { JobCandidateService } from './servisi/jobCandidate.service';
 import { SkillService } from './servisi/skill.service';
+import { NgbModal, NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModalBackdrop } from '@ng-bootstrap/ng-bootstrap/modal/modal-backdrop';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,7 @@ import { SkillService } from './servisi/skill.service';
     BrowserModule,
     RouteModule,
     FormsModule,
+    NgbModalModule
 
   ],
   providers: [
@@ -37,6 +40,7 @@ import { SkillService } from './servisi/skill.service';
     SkillService
 
   ],
+  entryComponents: [ListOfCandidatesComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

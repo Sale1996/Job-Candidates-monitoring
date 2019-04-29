@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid py-4">
 
 
     <form class="formCandidate">
@@ -29,7 +29,7 @@
 
 
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-6 align-self-end">
             <form>
                 <div class="form-group">
 
@@ -93,7 +93,7 @@
             <td>{{candidate.telephoneNumber}}</td>
             <td>{{candidate.dateOfBirth}}</td>
             <td><button type="button" class="btn btn-outline-info btn-sm" data-toggle="modal"
-                    data-target="#exampleModalCenter">view</button></td>
+                    data-target="#exampleModalCenter" (click)="open(content, candidate)">view</button></td>
             <td><button (click)="getCandidateById(candidate.id)" class="btn btn-outline-warning btn-sm">update</button>
             </td>
             <td><button (click)="deleteCandidate(candidate.id)" class="btn btn-outline-danger btn-sm">delete</button>
@@ -102,5 +102,46 @@
 
     </table>
 
-
 </div>
+
+<ng-template #content let-modal>
+    <div class="text-center modal-header ">
+        <h4 class="text-center" id="modal-basic-title">{{selectedCandidate.name}} skills</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <table>
+            <tr *ngFor="let skill of selectedCandidate.skills">
+                <div class="row center">
+                    <div class="col-md-6 align-self-end">
+                        <td>{{skill.name}}</td>
+
+                    </div>
+                    <div class="col-md-6 align-self-end">
+                        <td><button (click)="removeCandidateSkill(selectedCandidate.id,skill.id)"
+                                class="btn btn-outline-danger btn-sm">remove</button>
+                        </td>
+                    </div>
+                </div>
+
+            </tr>
+        </table>
+
+        <form class="pt-5">
+            <div class="form-group">
+                <div class="form-group">
+                    <label for="addCandidateSkill">Add new skill</label>
+                    <select class="form-control" name="selectSkill" id="addCandidateSkill"
+                        [(ngModel)]="newCandidateSkill">
+                        <option *ngFor="let skill of skills" value={{skill.id}}>{{skill.name}}</option>
+                    </select>
+                </div>
+            </div>
+            <button type="button" class="btn btn-outline-dark"
+                (click)="addCandidateSkill(selectedCandidate.id,newCandidateSkill)">Add skill</button>
+
+        </form>
+    </div>
+</ng-template>

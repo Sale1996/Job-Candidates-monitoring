@@ -65,4 +65,16 @@ export class JobCandidateService {
         return this.httpClient.post<IJobCandidateDTO[]>('http://localhost:8090/api/jobcandidate/skill/', body, httpOptions);
 
     }
+
+    candidateAddSkill(candidateId: Number, skillId: Number) {
+
+        return this.httpClient.put<IJobCandidateDTO>('http://localhost:8090/api/jobcandidate/addSkill/' + candidateId + '/' + skillId, {});
+
+    }
+
+    candidateRemoveSkill(candidateId: Number, skillId: Number) {
+
+        return this.httpClient.put<IJobCandidateDTO>('http://localhost:8090/api/jobcandidate/removeSkill/' + candidateId + '/' + skillId, {});
+
+    }
 }
