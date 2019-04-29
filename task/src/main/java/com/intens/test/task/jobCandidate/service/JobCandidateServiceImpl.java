@@ -61,7 +61,7 @@ public class JobCandidateServiceImpl implements IJobCandidateService {
 	
 	public List< JobCandidateDTO > findAllByName ( String name ) {
 		
-		Optional< List<JobCandidate> > candidates = jobCandidateRepository.findAllByName(name);
+		Optional< List<JobCandidate> > candidates = jobCandidateRepository.findAllByNameContaining(name);
 		
 		ArrayList < JobCandidateDTO > dtoCandidates = new ArrayList< JobCandidateDTO >();
 		
@@ -248,6 +248,12 @@ public class JobCandidateServiceImpl implements IJobCandidateService {
 		
 		
 		if( jobCandidateForChange.isPresent() && skill.isPresent() ) {
+			//if user already has same skill, we wont add it twice
+			if(jobCandidateForChange.get().getSkills().contains(skill.get())) {
+				
+				return new JobCandidateDTO();
+				
+			}
 										
 			jobCandidateForChange.get().getSkills().add(skill.get());
 	

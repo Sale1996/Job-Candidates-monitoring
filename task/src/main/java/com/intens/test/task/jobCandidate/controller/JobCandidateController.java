@@ -57,7 +57,7 @@ public class JobCandidateController {
 		
 	}
 	
-	@GetMapping("/skill/")
+	@PostMapping("/skill/")
 	@ApiOperation( value = "Returns all job candidates by skill", httpMethod = "GET")
 	@ApiResponses( value = { @ApiResponse( code = 200, message ="OK"),
 							 @ApiResponse( code = 404, message ="Not Found")})	

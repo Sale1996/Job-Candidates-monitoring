@@ -64,7 +64,7 @@ public class JobCandidateControllerTest {
 				"	3000\r\n" + 
 				"]";
 		
-		mockMvc.perform(get(URL_PREFIX + "/skill/").contentType(contentType).content(json)).andExpect(status().isOk());
+		mockMvc.perform(post(URL_PREFIX + "/skill/").contentType(contentType).content(json)).andExpect(status().isOk());
 	}
 	
 	

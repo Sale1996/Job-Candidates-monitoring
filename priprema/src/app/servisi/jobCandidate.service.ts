@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { IJobCandidateDTO } from '../models/jobCandidateDTO.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-
+import { RequestOptions, Request, RequestMethod } from '@angular/http';
 
 
 const httpOptions = {
@@ -48,6 +48,21 @@ export class JobCandidateService {
     getJobCandidateById(candidateId: string) {
 
         return this.httpClient.get<IJobCandidateDTO>('http://localhost:8090/api/jobcandidate/' + candidateId);
+
+    }
+
+    getAllJobCandidatesByName(candidateName: string) {
+
+        return this.httpClient.get<IJobCandidateDTO[]>('http://localhost:8090/api/jobcandidate/name/' + candidateName);
+
+    }
+
+
+    getAllJobCandidatesBySkills(idSkills: Array<Number>) {
+
+        let body = JSON.stringify(idSkills);
+
+        return this.httpClient.post<IJobCandidateDTO[]>('http://localhost:8090/api/jobcandidate/skill/', body, httpOptions);
 
     }
 }
