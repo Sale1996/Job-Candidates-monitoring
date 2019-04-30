@@ -1,19 +1,64 @@
-.buttonNewSkill{
-    margin: 15px;
-    margin-left: 0px;
+.form-control{
+    border:none;
 }
 
-.formSkill{
-    margin: 15px;
-    margin-left: 0px;
-    margin-right: 60%;
-   
-
-}
 
 input, textarea{
-    background-color: #343A40;
-    border-color: rgb(148, 93, 53);
-    border-inline-start-color: rgb(148, 93, 53);
+    background-color: #111111;
+    border-color: black(148, 93, 53);
+    color: azure;
+    margin : 10px;
+    margin-left: 0px;
+ 
+}
+
+input:focus { 
+    background-color: #3d3b3d;
+    color : whitesmoke;
+   
+  }
+
+
+
+  .table {
+    -webkit-box-shadow: inset -1px 0px 15px -3px rgba(0,0,0,0.63);
+    -moz-box-shadow: inset -1px 0px 15px -3px rgba(0,0,0,0.63);
+    box-shadow: inset -1px 0px 15px -3px rgba(0,0,0,0.63);
+}
+
+
+
+  
+.btn-outline-dark:hover, .btn-outline-dark:focus, .btn-outline-dark:active {
+	color: rgb(165, 38, 99);
+    border-color: rgb(165, 38, 99);
+    background-color:transparent;
+}
+
+
+
+.btn-outline-warning {
+    color: rgb(80, 105, 81);
+    border-color: rgb(80, 105, 81);
+    background-color: transparent;
+}
+
+.btn-outline-warning:hover, .btn-outline-warning:focus, .btn-outline-warning:active {
+	color: rgb(81, 212, 86);
+    border-color: rgb(81, 212, 86);
+    background-color: transparent;
+}
+
+
+.btn-outline-danger {
+    color: rgb(105, 84, 80);
+    border-color: rgb(105, 84, 80);
+    background-color: transparent;
+}
+
+.btn-outline-danger:hover, .btn-outline-danger:focus, .btn-outline-danger:active {
+	color: rgb(212, 81, 81);
+    border-color: rgb(212, 81, 81);
+    background-color: transparent;
 }
 

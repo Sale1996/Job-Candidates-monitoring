@@ -3,28 +3,40 @@
 
     <form class="formCandidate">
         <div class="form-group">
-            <input type="text" name="name" [(ngModel)]="jobCandidate.name" class="form-control" id="inputCandidateName"
-                placeholder="Enter candidate full name" />
+            <div class="row">
+                <div class="col-md-6 align-self-end">
+                    <input type="text" name="name" [(ngModel)]="jobCandidate.name" class="form-control"
+                        id="inputCandidateName" placeholder="Enter candidate full name" />
 
-            <input type="email" name="email" [(ngModel)]="jobCandidate.email" class="form-control"
-                id="inputCandidateEmail" placeholder="Enter candidate email" />
+                    <input type="email" name="email" [(ngModel)]="jobCandidate.email" class="form-control"
+                        id="inputCandidateEmail" placeholder="Enter candidate email" />
 
-            <input type="text" name="telephoneNumber" [(ngModel)]="jobCandidate.telephoneNumber" class="form-control"
-                id="inputCandidateNumber" placeholder="Enter candidate telephone number" />
+                    <input type="text" name="telephoneNumber" [(ngModel)]="jobCandidate.telephoneNumber"
+                        class="form-control" id="inputCandidateNumber" placeholder="Enter candidate telephone number" />
 
-            <input type="date" name="dateOfBirth" [(ngModel)]="jobCandidate.dateOfBirth" class="form-control"
-                id="inputCandidateDateOfBirth" placeholder="Enter candidate date of birth" />
+                    <input type="date" name="dateOfBirth" [(ngModel)]="jobCandidate.dateOfBirth" class="form-control"
+                        id="inputCandidateDateOfBirth" placeholder="Enter candidate date of birth" />
 
-            <div class="form-group">
-                <label for="exampleFormControlSelect2">Choose candidate skills</label>
-                <select multiple class="form-control" name="selectSkill" id="exampleFormControlSelect2"
-                    [(ngModel)]="selectedSkills">
-                    <option *ngFor="let skill of skills" value={{skill.id}}>{{skill.name}}</option>
-                </select>
+                </div>
+                <div class="col-md-6 align-self-end">
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect2" style="color : white">Choose candidate skills</label>
+                        <select multiple class="form-control" name="selectSkill" id="exampleFormControlSelect2"
+                            [(ngModel)]="selectedSkills">
+                            <option *ngFor="let skill of skills" value={{skill.id}}>{{skill.name}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6 align-self-end">
+                    <button type="submit" (click)="addCandidate()"
+                        class="buttonNewCandidate btn btn-dark btn-outline-dark addButton">Add/Update
+                        candidate</button>
+                </div>
             </div>
+
+
         </div>
-        <button type="submit" (click)="addCandidate()" class="buttonNewCandidate btn btn-dark btn-outline-dark">Add new
-            candidate</button>
+
     </form>
 
 
@@ -43,7 +55,7 @@
             <form>
                 <div class="form-group">
                     <div class="form-group">
-                        <label for="exampleFormControlSelect2">Search candidates by skills</label>
+                        <label for="exampleFormControlSelect2" style="color : white">Search candidates by skills</label>
                         <select multiple class="form-control" name="selectSkill" id="exampleFormControlSelect2"
                             [(ngModel)]="skillsForSearching" (ngModelChange)="getCandidatesBySkills()">
                             <option *ngFor="let skill of skills" value={{skill.id}}>{{skill.name}}</option>
@@ -113,13 +125,13 @@
     </div>
     <div class="modal-body">
         <table>
-            <tr *ngFor="let skill of selectedCandidate.skills">
-                <div class="row center">
-                    <div class="col-md-6 align-self-end">
+            <tr class="tableOfUserSkills" *ngFor="let skill of selectedCandidate.skills">
+                <div class="row">
+                    <div class="col-md-6 ">
                         <td>{{skill.name}}</td>
 
                     </div>
-                    <div class="col-md-6 align-self-end">
+                    <div class="col-md-6">
                         <td><button (click)="removeCandidateSkill(selectedCandidate.id,skill.id)"
                                 class="btn btn-outline-danger btn-sm">remove</button>
                         </td>

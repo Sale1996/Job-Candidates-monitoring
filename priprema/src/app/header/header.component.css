@@ -1,6 +1,12 @@
 .jumbotron {
-    background: #CAAF7D;
+    background: hsl(330, 27%, 22%);
     padding: 45px;
     margin: 0%;
     border-radius: 0;
+    text-align: center;
+}
+
+.header {
+    text-align: center;
+    color: #f2f2f2;
 }
