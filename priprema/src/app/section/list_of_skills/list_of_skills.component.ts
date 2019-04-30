@@ -14,7 +14,11 @@ export class ListOfSkillsComponent implements OnInit {
 
     skills: Array<ISkillDTO> = [];
 
-    skill: ISkillDTO = { id: null, name: '' };
+    skill: ISkillDTO = { id: -1, name: '' };
+
+
+    //validation
+    emptyName = false;
 
     constructor(private skillService: SkillService) { }
 
@@ -33,8 +37,16 @@ export class ListOfSkillsComponent implements OnInit {
 
     addSkill(): void {
 
+        if (this.skill.name == '') {
+            this.emptyName = true;
+            return;
+        }
+        else {
+            this.emptyName = false;
+        }
+
         this.skillService.addSkill(this.skill).subscribe(
-            (response) => { console.log(response); this.getSkills(); this.skill = { id: null, name: '' }; },
+            (response) => { console.log(response); this.getSkills(); this.skill = { id: -1, name: '' }; },
             (error) => {
                 console.log(error);
 

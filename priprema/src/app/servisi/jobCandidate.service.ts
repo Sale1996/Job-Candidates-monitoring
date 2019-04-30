@@ -29,7 +29,7 @@ export class JobCandidateService {
 
         let body = JSON.stringify(candidate);
 
-        if (candidate.id) {
+        if (candidate.id != -1) {
             return this.httpClient.put('http://localhost:8090/api/jobcandidate/' + candidate.id, body, httpOptions);
         }
         else {

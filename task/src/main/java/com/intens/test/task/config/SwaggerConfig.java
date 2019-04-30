@@ -24,7 +24,7 @@ public class SwaggerConfig {
 	}
 
 	private Predicate<String> postPaths() {
-		return or(regex("/api/intens/task/.*"), regex("/api/intens/task/.*"));
+		return or(regex("/api/.*"), regex("/api/.*"));
 	}
 
 	@SuppressWarnings("deprecation")

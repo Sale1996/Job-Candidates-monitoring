@@ -17,6 +17,7 @@
                     <input type="date" name="dateOfBirth" [(ngModel)]="jobCandidate.dateOfBirth" class="form-control"
                         id="inputCandidateDateOfBirth" placeholder="Enter candidate date of birth" />
 
+
                 </div>
                 <div class="col-md-6 align-self-end">
                     <div class="form-group">
@@ -28,10 +29,30 @@
                     </div>
                 </div>
                 <div class="col-md-6 align-self-end">
+                    <div *ngIf="!validEmail">
+                        <p class="errorMessage">Please enter valid email.</p>
+                    </div>
+                    <div *ngIf="emptyEmail">
+                        <p class="errorMessage">Please enter email.</p>
+                    </div>
+                    <div *ngIf="emptyName">
+                        <p class="errorMessage">Please enter name.</p>
+                    </div>
+                    <div *ngIf="emptyPhoneNumber">
+                        <p class="errorMessage">Please enter telephone number.</p>
+                    </div>
+                    <div *ngIf="emptyDateOfBirth">
+                        <p class="errorMessage">Please enter date of birth.</p>
+                    </div>
+                    <div *ngIf="!validPhoneNumber">
+                        <p class="errorMessage">Please enter valid phone number.</p>
+                    </div>
                     <button type="submit" (click)="addCandidate()"
                         class="buttonNewCandidate btn btn-dark btn-outline-dark addButton">Add/Update
                         candidate</button>
                 </div>
+
+
             </div>
 
 

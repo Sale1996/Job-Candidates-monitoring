@@ -15,6 +15,8 @@
     border:none;
 }
 
+
+
 input, textarea , select, option{
     background-color: #111111;
     border-color: black(148, 93, 53);
@@ -23,6 +25,8 @@ input, textarea , select, option{
     margin-left: 0px;
     
 }
+
+
 
 input:focus , textarea:focus, select:focus,option:focus { 
     background-color: #3d3b3d;
@@ -96,4 +100,12 @@ input:focus , textarea:focus, select:focus,option:focus {
 .modal-body{
     color : whitesmoke;
     background-color: #272627;
+}
+
+
+.errorMessage{
+
+    color : #f14747;
+    margin-left: 3px;
+
 }

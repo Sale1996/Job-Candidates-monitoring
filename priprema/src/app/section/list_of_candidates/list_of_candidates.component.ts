@@ -26,6 +26,15 @@ export class ListOfCandidatesComponent implements OnInit {
     newCandidateSkill = {};
 
 
+    //validation
+    validEmail = true;
+    validPhoneNumber = true;
+    emptyEmail = false;
+    emptyName = false;
+    emptyPhoneNumber = false;
+    emptyDateOfBirth = false;
+
+
     constructor(
         private candidateService: JobCandidateService,
         private skillService: SkillService,
@@ -57,6 +66,51 @@ export class ListOfCandidatesComponent implements OnInit {
 
         console.log(this.selectedSkills);
 
+
+        const validEmailRegEx = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+        if (this.jobCandidate.email == '') {
+            this.emptyEmail = true;
+            this.validEmail = true;
+        }
+        else if (!validEmailRegEx.test(this.jobCandidate.email)) {
+            this.validEmail = false;
+            this.emptyEmail = false;
+        }
+        else {
+            this.validEmail = true;
+            this.emptyEmail = false;
+        }
+
+
+        const validPhoneNumberRegEx = /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/;
+        if (this.jobCandidate.telephoneNumber == '') {
+            this.emptyPhoneNumber = true;
+            this.validPhoneNumber = true;
+        }
+        else if (!validPhoneNumberRegEx.test(this.jobCandidate.telephoneNumber)) {
+            this.emptyPhoneNumber = false;
+            this.validPhoneNumber = false;
+        }
+        else {
+            this.validPhoneNumber = true;
+            this.emptyPhoneNumber = false;
+        }
+
+        if (this.jobCandidate.name == '') {
+            this.emptyName = true;
+        }
+        else {
+            this.emptyName = false;
+        }
+
+        if (this.jobCandidate.dateOfBirth == null) {
+            this.emptyDateOfBirth = true;
+        }
+        else {
+            this.emptyDateOfBirth = false;
+        }
+
         for (var i = 0; i < this.selectedSkills.length; i++) {
             var skillId = Number(this.selectedSkills[i]);
             this.jobCandidate.skills.push({ id: skillId, name: '' });
@@ -70,6 +124,7 @@ export class ListOfCandidatesComponent implements OnInit {
                 console.log(error);
             }
         );
+
 
     }
 

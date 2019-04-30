@@ -26,7 +26,7 @@ export class SkillService {
 
         let body = JSON.stringify(skill);
 
-        if (skill.id != null) {
+        if (skill.id != -1) {
             return this.httpClient.put('http://localhost:8090/api/skill/' + skill.id, body, httpOptions);
         }
         else {

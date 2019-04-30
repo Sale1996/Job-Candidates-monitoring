@@ -9,6 +9,9 @@
                         placeholder="Enter skill name">
                 </div>
                 <div class="col-md-12 align-self-end">
+                    <div *ngIf="emptyName">
+                        <p class="errorMessage">Please enter skill name.</p>
+                    </div>
                     <button type="submit" (click)="addSkill()" class=" btn btn-dark btn-outline-dark">Add/Update
                         skill</button>
 
